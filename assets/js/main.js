@@ -8,6 +8,7 @@ let currentPokemons = []
 let offset = 0;
 
 function convertPokemonToLi(pokemon) {
+    console.log(pokemon)
     return `
         <li id="${pokemon.number}" class="pokemon ${pokemon.type}">
             <span class="number">#${pokemon.number}</span>
@@ -40,15 +41,51 @@ function convertPokemonToModalContent(pokemon) {
                     ${pokemon.types.map((type) => `<li class="modal-type ${type}">${type}</li>`).join('')}
                 </ol>
             </div>
-            <h3 class="modal-pokemon-id">#${pokemon.number}</h3>
+            <h3 class="modal-pokemon-id">#${pokemon.number > 100 ? pokemon.number :
+                                            pokemon.number > 10 ? `00${pokemon.number}` :
+                                            `00${pokemon.number}`}</h3>
         </section>
 
         <section class="modal-photo">
             <img src="${pokemon.photo}" alt="${pokemon.name}">
         </section>
 
-        <section>
-            <p>test</p>
+        <section class="modal-data">
+            <div>
+                <h3>Stats</h3>
+                <table>
+                    <tbody>
+                        ${pokemon.stats.map((stat) =>
+                            `<tr>
+                                <td class="modal-stat">${stat.stat.name}</td>
+                                <td>${stat.effort}</td>
+                            </tr>`
+                        ).join('')}
+                    </tbody>
+                </table>            
+            </div>
+
+            <div>
+                <h3>Abilities</h3>
+                ${pokemon.abilities.map((ability) => `<p class="modal-ability">${ability.ability.name}</p>`).join('')}
+            </div>
+
+            <div>
+                <h3>Info</h3>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Height</td>
+                            <td>${pokemon.height}</td>
+                        </tr>
+                        <tr>
+                            <td>Weight</td>
+                            <td>${pokemon.weight}</td>
+                        </tr>
+                    </tbody>
+                </table>        
+            </div>
+
         </section>
     </div>
     `
@@ -65,7 +102,7 @@ function loadPokemonItens(offset, limit) {
 }
 
 function openModal() {
-    modal.style.display = "block";
+    modal.style.display = "flex";
             
     const modalCloseButton = document.getElementsByClassName("close")[0];
     modalCloseButton.onclick = function() {
