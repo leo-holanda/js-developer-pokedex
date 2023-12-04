@@ -10,16 +10,16 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
+}
   
   /* Modal Content/Box */
-  .modal-content {
+.modal-content {
     background-color: #fefefe;
     margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
-  }
+    border-radius: 16px;
+}
   
   /* The Close Button */
   .close {
@@ -35,3 +35,58 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    margin-top: 16px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px;
+}
+
+
+.modal-types {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 8px;
+}
+
+.modal-type {
+    color: #fff;
+    padding: .25rem 1rem;
+    margin: .25rem 0;
+    border-radius: 1rem;
+    filter: brightness(1.1);
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.modal-name {
+    color: #fff;
+    text-transform: capitalize;
+    margin-bottom: 8px;
+}
+
+.modal-pokemon-id {
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+
+.modal-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-photo img {
+    width: 33%;
+}

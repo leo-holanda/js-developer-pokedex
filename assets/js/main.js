@@ -1,7 +1,6 @@
 const pokemonList = document.getElementById('pokemonList')
 const loadMoreButton = document.getElementById('loadMoreButton')
 const modal = document.getElementById("modal");
-const modalContent = document.getElementById("modal-content");
 
 const maxRecords = 151
 const limit = 10
@@ -28,28 +27,30 @@ function convertPokemonToLi(pokemon) {
 
 function convertPokemonToModalContent(pokemon) {
     return `
-        <header>
-            <span>←</span>
-            <span class="close">&times;</span>
+    <div class="modal-content ${pokemon.type}">
+        <header class="header">
+            <img src="${'https://icongr.am/octicons/arrow-left.svg?size=32&color=ffffff'}">
+            <img src="${'https://icongr.am/octicons/heart.svg?size=32&color=ffffff'}">
         </header>
 
-        <section>
+        <section class="info">
             <div>
-                <h2>${pokemon.name}<h2>
-                <ol class="types">
-                    ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
+                <h1 class="modal-name">${pokemon.name}</h1>
+                <ol class="modal-types">
+                    ${pokemon.types.map((type) => `<li class="modal-type ${type}">${type}</li>`).join('')}
                 </ol>
             </div>
-            <h3>#${pokemon.number}</h3>
+            <h3 class="modal-pokemon-id">#${pokemon.number}</h3>
         </section>
 
-        <section>
+        <section class="modal-photo">
             <img src="${pokemon.photo}" alt="${pokemon.name}">
         </section>
 
         <section>
             <p>test</p>
         </section>
+    </div>
     `
 }
 
@@ -76,7 +77,7 @@ function attachClickListeners() {
     document.querySelectorAll(".pokemon").forEach((listItem) => {
         listItem.addEventListener("click", () => {
             const clickedPokemon = currentPokemons.find((pokemon) => pokemon.number == listItem.id)
-            modalContent.innerHTML = convertPokemonToModalContent(clickedPokemon)
+            modal.innerHTML = convertPokemonToModalContent(clickedPokemon)
             openModal()
         })
     }) 
