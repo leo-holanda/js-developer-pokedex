@@ -1,13 +1,16 @@
 const pokemonList = document.getElementById('pokemonList')
 const loadMoreButton = document.getElementById('loadMoreButton')
+const modal = document.getElementById("modal");
+const modalCloseButton = document.getElementsByClassName("close")[0];
 
 const maxRecords = 151
 const limit = 10
+let currentPokemons = []
 let offset = 0;
 
 function convertPokemonToLi(pokemon) {
     return `
-        <li class="pokemon ${pokemon.type}">
+        <li id="${pokemon.number}" class="pokemon ${pokemon.type}">
             <span class="number">#${pokemon.number}</span>
             <span class="name">${pokemon.name}</span>
 
@@ -25,9 +28,20 @@ function convertPokemonToLi(pokemon) {
 
 function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
+        currentPokemons = pokemons
         const newHtml = pokemons.map(convertPokemonToLi).join('')
         pokemonList.innerHTML += newHtml
+        attachClickListeners()
     })
+
+}
+
+function attachClickListeners() {
+    document.querySelectorAll(".pokemon").forEach((listItem) => {
+        listItem.addEventListener("click", () => {
+            console.log(currentPokemons.find((pokemon) => pokemon.number == listItem.id))
+        })
+    }) 
 }
 
 loadPokemonItens(offset, limit)
@@ -46,15 +60,7 @@ loadMoreButton.addEventListener('click', () => {
     }
 })
 
-const modal = document.getElementById("modal");
-const btn = document.getElementById("open-modal-btn");
-const span = document.getElementsByClassName("close")[0];
-
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-span.onclick = function() {
+modalCloseButton.onclick = function() {
   modal.style.display = "none";
 }
 
