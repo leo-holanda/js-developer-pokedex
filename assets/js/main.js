@@ -1,7 +1,7 @@
 const pokemonList = document.getElementById('pokemonList')
 const loadMoreButton = document.getElementById('loadMoreButton')
 const modal = document.getElementById("modal");
-const modalCloseButton = document.getElementsByClassName("close")[0];
+const modalContent = document.getElementById("modal-content");
 
 const maxRecords = 151
 const limit = 10
@@ -26,6 +26,33 @@ function convertPokemonToLi(pokemon) {
     `
 }
 
+function convertPokemonToModalContent(pokemon) {
+    return `
+        <header>
+            <span>←</span>
+            <span class="close">&times;</span>
+        </header>
+
+        <section>
+            <div>
+                <h2>${pokemon.name}<h2>
+                <ol class="types">
+                    ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
+                </ol>
+            </div>
+            <h3>#${pokemon.number}</h3>
+        </section>
+
+        <section>
+            <img src="${pokemon.photo}" alt="${pokemon.name}">
+        </section>
+
+        <section>
+            <p>test</p>
+        </section>
+    `
+}
+
 function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
         currentPokemons = pokemons
@@ -36,10 +63,21 @@ function loadPokemonItens(offset, limit) {
 
 }
 
+function openModal() {
+    modal.style.display = "block";
+            
+    const modalCloseButton = document.getElementsByClassName("close")[0];
+    modalCloseButton.onclick = function() {
+        modal.style.display = "none";
+    }
+}
+
 function attachClickListeners() {
     document.querySelectorAll(".pokemon").forEach((listItem) => {
         listItem.addEventListener("click", () => {
-            console.log(currentPokemons.find((pokemon) => pokemon.number == listItem.id))
+            const clickedPokemon = currentPokemons.find((pokemon) => pokemon.number == listItem.id)
+            modalContent.innerHTML = convertPokemonToModalContent(clickedPokemon)
+            openModal()
         })
     }) 
 }
@@ -60,9 +98,7 @@ loadMoreButton.addEventListener('click', () => {
     }
 })
 
-modalCloseButton.onclick = function() {
-  modal.style.display = "none";
-}
+
 
 window.onclick = function(event) {
   if (event.target == modal) {
