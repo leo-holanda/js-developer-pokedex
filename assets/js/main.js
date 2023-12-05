@@ -29,7 +29,7 @@ function convertPokemonToModalContent(pokemon) {
     return `
     <div class="modal-content ${pokemon.type}">
         <header class="header">
-            <img src="${'https://icongr.am/octicons/arrow-left.svg?size=32&color=ffffff'}">
+            <img id="close-modal" src="${'https://icongr.am/octicons/arrow-left.svg?size=32&color=ffffff'}">
             <img src="${'https://icongr.am/octicons/heart.svg?size=32&color=ffffff'}">
         </header>
 
@@ -103,8 +103,8 @@ function loadPokemonItens(offset, limit) {
 
 function openModal() {
     modal.style.display = "flex";
-            
-    const modalCloseButton = document.getElementsByClassName("close")[0];
+    
+    const modalCloseButton = document.getElementById("close-modal");
     modalCloseButton.onclick = function() {
         modal.style.display = "none";
     }
