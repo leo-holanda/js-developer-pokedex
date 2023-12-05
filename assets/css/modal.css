@@ -88,7 +88,7 @@
 }
 
 .modal-photo img {
-    width: 24%;
+    width: 33%;
     position: relative;
     top: 16px;
 }
@@ -144,5 +144,9 @@ td {
 
     .modal-data {
         border-radius: 40px 40px 0 0;
+    }
+
+    .info {
+        gap: 2rem
     }
 }
