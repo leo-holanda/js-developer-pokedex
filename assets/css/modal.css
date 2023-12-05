@@ -142,17 +142,23 @@ td {
 }
 
 
-@media (max-width: 767px) {
+@media (max-width: 992px) {
     .modal-content {
         width: 100%;
+        height: 100%;
         border-radius: 0;
     }
 
     .modal-data {
         border-radius: 40px 40px 0 0;
+        height: 100%;
     }
 
     .info {
         gap: 2rem
+    }
+
+    td {
+        padding: 0px;
     }
 }
