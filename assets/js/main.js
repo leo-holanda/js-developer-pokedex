@@ -8,7 +8,6 @@ let currentPokemons = []
 let offset = 0;
 
 function convertPokemonToLi(pokemon) {
-    console.log(pokemon)
     return `
         <li id="${pokemon.number}" class="pokemon ${pokemon.type}">
             <span class="number">#${pokemon.number}</span>
@@ -52,13 +51,29 @@ function convertPokemonToModalContent(pokemon) {
 
         <section class="modal-data">
             <div>
+                <h3>Info</h3>
+                <table class="modal-info-table">
+                    <tbody>
+                        <tr>
+                            <td class="modal-info-name">Height</td>
+                            <td>${pokemon.height}</td>
+                        </tr>
+                        <tr>
+                            <td class="modal-info-name">Weight</td>
+                            <td>${pokemon.weight}</td>
+                        </tr>
+                    </tbody>
+                </table>        
+            </div>
+
+            <div>
                 <h3>Stats</h3>
-                <table>
+                <table class="modal-table">
                     <tbody>
                         ${pokemon.stats.map((stat) =>
                             `<tr>
                                 <td class="modal-stat">${stat.stat.name}</td>
-                                <td>${stat.effort}</td>
+                                <td class="modal-stat-value">${stat.effort}</td>
                             </tr>`
                         ).join('')}
                     </tbody>
@@ -66,26 +81,11 @@ function convertPokemonToModalContent(pokemon) {
             </div>
 
             <div>
-                <h3>Abilities</h3>
-                ${pokemon.abilities.map((ability) => `<p class="modal-ability">${ability.ability.name}</p>`).join('')}
+                <div>
+                    <h3>Abilities</h3>
+                    ${pokemon.abilities.map((ability) => `<p class="modal-ability">${ability.ability.name}</p>`).join('')}
+                </div>
             </div>
-
-            <div>
-                <h3>Info</h3>
-                <table>
-                    <tbody>
-                        <tr>
-                            <td>Height</td>
-                            <td>${pokemon.height}</td>
-                        </tr>
-                        <tr>
-                            <td>Weight</td>
-                            <td>${pokemon.weight}</td>
-                        </tr>
-                    </tbody>
-                </table>        
-            </div>
-
         </section>
     </div>
     `

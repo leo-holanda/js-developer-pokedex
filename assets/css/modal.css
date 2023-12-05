@@ -6,7 +6,6 @@
     overflow-y: hidden;
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    left: 0;
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
@@ -14,17 +13,14 @@
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
   
-  /* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    border-radius: 16px;
+    border-radius: 40px;
 }
-  
-  /* The Close Button */
-  .close {
+
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -43,13 +39,14 @@
     align-items: center;
     justify-content: space-between;
     padding: 8px 32px;
-    margin-top: 48px;
+    margin-top: 40px;
 }
 
 .info {
     display: flex;
     justify-content: space-between;
     padding: 8px 32px;
+    gap: 4rem;
 }
 
 
@@ -93,20 +90,48 @@
 .modal-photo img {
     width: 24%;
     position: relative;
-    bottom: -56px;
+    top: 16px;
 }
 
 .modal-data {
     background-color: #fff;
-    border-radius: 16px;
+    border-radius: 40px;
     padding: 32px;
 }
 
 .modal-stat {
     text-transform: uppercase;
+    color: #585858;
 
 }
 
 .modal-ability {
+    color: #585858;
     text-transform: capitalize;
 }
+
+.modal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.modal-info-table {
+    width: 33%;
+    border-collapse: collapse;
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.modal-info-name {
+    color: #585858;
+}
+
+.modal-stat-value {
+    text-align: right;
+}
+
+td {
+    padding: 8px 0;
+    text-align: left;
+}
+
