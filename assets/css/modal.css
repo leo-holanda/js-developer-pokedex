@@ -135,6 +135,12 @@ td {
     text-align: left;
 }
 
+#close-modal:hover {
+    filter: brightness(0.1);
+    transition: filter 0.2s ease;
+    cursor: pointer;
+}
+
 
 @media (max-width: 767px) {
     .modal-content {
