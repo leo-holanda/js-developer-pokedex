@@ -93,7 +93,7 @@ function convertPokemonToModalContent(pokemon) {
 
 function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
-        currentPokemons = pokemons
+        currentPokemons.push(...pokemons)
         const newHtml = pokemons.map(convertPokemonToLi).join('')
         pokemonList.innerHTML += newHtml
         attachClickListeners()
