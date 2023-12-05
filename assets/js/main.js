@@ -51,7 +51,7 @@ function convertPokemonToModalContent(pokemon) {
 
         <section class="modal-data">
             <div>
-                <h3>Info</h3>
+                <h2>Info</h2>
                 <table class="modal-info-table">
                     <tbody>
                         <tr>
@@ -67,7 +67,7 @@ function convertPokemonToModalContent(pokemon) {
             </div>
 
             <div>
-                <h3>Stats</h3>
+                <h2>Stats</h2>
                 <table class="modal-table">
                     <tbody>
                         ${pokemon.stats.map((stat) =>
@@ -82,7 +82,7 @@ function convertPokemonToModalContent(pokemon) {
 
             <div>
                 <div>
-                    <h3>Abilities</h3>
+                    <h2>Abilities</h2>
                     ${pokemon.abilities.map((ability) => `<p class="modal-ability">${ability.ability.name}</p>`).join('')}
                 </div>
             </div>
